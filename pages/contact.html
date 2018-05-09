@@ -1,0 +1,35 @@
+<div id="contact" class="section section-1">
+    <h2>Contact Us</h2>
+    <form action="">
+        <table><tr>
+            <td><input type="text" placeholder="Name"></td>
+            <td><input type="email" placeholder="Email"></td>
+        </tr><tr>
+            <td colspan="2"><textarea placeholder="Message"></textarea></td>
+        </tr><tr>
+            <td colspan="2"><input type="submit" value="Submit"></td>
+        </tr></table>
+    </form>
+</div>
+
+<div id="shipping" class="section section-2">
+    Shipping & Return Policy
+</div>
+
+<div id="privacy" class="section section-3">
+    Privacy Policy
+</div>
+
+<div id="subscribe" class="section section-4">
+    <div class="social">
+        <a href="https://www.instagram.com/hannya_design/" target="_blank" social="Instagram" title="@hannya_design"></a>
+    </div>
+</div>
+
+<script>
+    section = location.hash.split('?')[1]
+    var sectionElem = document.getElementById(section)
+        sectionElem.scrollIntoView({behavior: 'smooth'})
+    $('footer.mobile .left-side a').removeClass('active')
+    $(`footer.mobile .left-side a[href="#contact?${section}"]`).addClass('active')
+</script>
