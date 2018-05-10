@@ -29,6 +29,8 @@
         if (e.which == 37) $('.accordion span.opened').prev().click()	// ←
         if (e.which == 39) $('.accordion span.opened').next().click()	// →
     })
+
+    // Swipe Gesture
     $('.accordion').on('touchend', () => {
         if (window.pageYOffset > 30)
             $('.accordion span.opened').next().click()

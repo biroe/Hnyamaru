@@ -5,7 +5,7 @@
   font-family: "Times New Roman", Times, serif; }
   *::selection {
     background: #bf2a32;
-    color: #000;
+    color: #fff;
     text-shadow: none; }
 
 body {
@@ -563,21 +563,32 @@ main {
     main.contact #contact table td {
       padding: 4px; }
   main.contact #contact input, main.contact #contact textarea {
-    padding: 10px 0;
+    padding: 10px;
+    width: calc(100% - 20px);
     outline: none;
-    width: 100%;
-    border: 1px solid #bf2a32;
+    border: none;
+    border-radius: 4px;
     background: #fff;
-    text-indent: 10px;
     font-size: 15px; }
     main.contact #contact input::placeholder, main.contact #contact textarea::placeholder {
       font-size: 12px; }
+    main.contact #contact input[type="text"], main.contact #contact input[type="email"], main.contact #contact textarea[type="text"], main.contact #contact textarea[type="email"] {
+      width: calc(100% - 20px); }
     main.contact #contact input[type="submit"], main.contact #contact textarea[type="submit"] {
+      width: 100%;
       cursor: pointer;
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #bf2a32;
+      color: #fff;
+      padding: 7px 0;
       font-size: 18px; }
       main.contact #contact input[type="submit"]:active, main.contact #contact textarea[type="submit"]:active {
-        background: #bf2a32;
-        color: #fff; }
+        background: rgba(191, 42, 50, 0.7); }
+  main.contact #contact textarea {
+    resize: vertical;
+    height: 100px; }
 
 body.whiteBG {
   background: #fff;
@@ -677,11 +688,14 @@ body.whiteBG {
         margin: 0 0 40px 0;
         width: 100vw;
         height: 100vw; }
-        main.store .product-info #image p i {
-          margin: 6px;
-          width: 15px;
-          height: 15px;
-          border-radius: 15px; } }
+        main.store .product-info #image p {
+          top: 0;
+          bottom: initial; }
+          main.store .product-info #image p i {
+            margin: 6px;
+            width: 15px;
+            height: 15px;
+            border-radius: 15px; } }
 @supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
   aside.loading {
     backdrop-filter: blur(8px) saturate(1.8);
