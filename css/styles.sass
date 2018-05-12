@@ -1,0 +1,692 @@
+// Variables
+=center-align
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+=link-styles
+    position: relative
+    text-transform: uppercase
+    font-size: 24px
+    transition: $transition
+    &:hover, &.active
+        color: $red
+        &::before, &::after
+            width: 100%
+    &::before, &::after
+        content: ''
+        position: absolute
+        right: 0
+        bottom: -0.1em
+        width: 0
+        height: 1px
+        background: $red
+        transition: $transition
+    &::before
+        left: 0
+        right: initial
+        top: -0.05em
+        bottom: initial
+=button
+    cursor: pointer
+    display: inline-block
+    padding: 2px 6px
+    border-radius: 4px
+    background: $red
+    color: #fff
+    &:active
+        background: rgba(191,42,50, .7)
+=text-shadow($rgb)
+    text-shadow: 2px 2px 10px rgba($rgb,$rgb,$rgb, .9)
+=hnya-diamond
+    display: inline-block
+    margin: 8px
+    width: 40px
+    height: 40px
+    border: 1px solid $red
+=blur
+    backdrop-filter: blur(8px) saturate(1.8)
+    -webkit-backdrop-filter: blur(8px) saturate(1.8)
+
+$red: #bf2a32
+$red-dark: #e62a32
+
+$transition: .3s ease-in-out
+$bounce: .3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+$headerSize: 80px
+
+// Common
+*
+    margin: 0
+    padding: 0
+    font-family: "Times New Roman", Times, serif
+    &::selection
+        background: $red
+        color: #fff
+        text-shadow: none
+body
+    position: fixed
+    width: 100vw
+    height: 100vh
+    background: #000
+    color: #fff
+    text-align: center
+    transition: background-color $transition, transform $transition
+a
+    text-decoration: none
+    color: #fff
+    transition: $transition
+    &:hover
+        color: $red !important
+.hoverFlip
+    position: relative
+    &:hover
+        .hf-1
+            top: 25%
+            opacity: 0
+        .hf-2
+            top: 50%
+            opacity: 1
+    span
+        pointer-events: none
+        +center-align
+        transition: $bounce
+        &.hf-2
+            top: 75%
+            transform: translateY(0)
+            opacity: 0
+hr
+    margin: 10px 0
+    width: 100%
+    height: 1px
+    border: none
+    background: #eee
+
+// CSS Grid (Body)
+body
+    display: grid
+    grid-template-areas: 'section-1' 'section-2' 'section-3' 'section-4'
+    grid-template-columns: 100vw
+    grid-template-rows: $headerSize auto 100px 40px
+    header
+        grid-area: section-1
+    main
+        grid-area: section-2
+    nav
+        grid-area: section-3
+    footer.desktop
+        grid-area: section-4
+
+// Body > *
+header
+    position: relative
+    h1
+        +center-align
+        z-index: 1
+        &:hover
+            &::before, &::after
+                width: 50vw
+        &::before, &::after
+            content: ''
+            position: absolute
+            left: 0
+            top: 50%
+            transform: translate(calc(-50vw - 40px), 50%)
+            width: 0
+            height: 1px
+            background: $red
+            transition: $transition
+        &::after
+            left: initial
+            right: 0
+            transform: translate(calc(50vw + 40px), 50%)
+
+nav
+    position: relative
+    #links-desktop
+        width: 100vw
+        +center-align
+        a
+            +link-styles
+            font-size: 19px
+            margin: 0 10px
+    #links-mobile,
+    #links-mobile-trigger
+        display: none
+        position: fixed
+        top: 0
+        z-index: 1
+    #links-mobile-trigger
+        left: 0
+        width: 70px
+        height: 80px
+        &.opened
+            span
+                color: $red
+        span
+            +center-align
+            font-size: 48px
+            transition: $transition
+    #links-mobile
+        left: 0
+        bottom: 0
+        z-index: -1
+        width: 40vw
+        border-right: 2px solid $red
+        background: rgb(20, 20, 20)
+        box-shadow: none
+        transform: translate(-100%, 0)
+        &.opened
+            box-shadow: inset -5px 0 20px rgba(0,0,0, .8)
+        a
+            display: block
+            margin: 0 0 6px 0
+        & > a
+            +link-styles
+            margin: 0 0 12px 0
+            font-size: 18px
+            &:first-child
+                margin-top: 60px
+
+footer
+    *
+        vertical-align: middle
+    & :not(.social) a
+        +link-styles
+    a
+        color: gray !important
+        text-transform: capitalize !important
+        font-size: 12px !important
+    span
+        color: gray !important
+    &.desktop
+        width: 750px
+        max-width: 100vw
+        margin: 0 auto
+        text-align: left
+    &.mobile
+        position: absolute
+        left: 50%
+        bottom: 20px
+        transform: translate(-50%, 0)
+        width: 100%
+        .left-side
+            float: initial
+        .right-side
+            float: initial
+        .social a
+            display: inline-block !important
+        a
+            font-size: 12px !important
+        span
+            display: none
+    .left-side
+        float: left
+    .right-side
+        float: right
+
+.social a
+    display: inline-block
+    width: 20px
+    height: 20px
+    background: center/cover no-repeat
+
+aside.loading
+    display: none
+    pointer-events: none
+    position: fixed
+    left: 0
+    top: 0
+    width: 100vw
+    height: 100vh
+    background: #000
+    figure
+        +center-align
+        top: calc((90vh - 60px) / 2)
+        animation: hd-figure 1.8s ease-in-out infinite
+        span
+            position: relative
+            float: left
+            +hnya-diamond
+            animation: hd-span 1.8s ease-in-out infinite
+            &::after
+                +center-align
+                font-size: 32px
+            &.hd_1::after
+                content: 'H'
+            &.hd_2::after
+                content: 'N'
+            &.hd_3::after
+                content: 'Y'
+            &.hd_4::after
+                content: 'A'
+        @keyframes hd-figure
+            0%
+                transform: translate(-50%, -50%) scale(-1.3, -1) rotate(-45deg)
+            40%, 50%
+                transform: translate(-50%, -50%) scale(-1.3, -1) rotate(135deg)
+            90%, 100%
+                transform: translate(-50%, -50%) scale(-1.3, -1) rotate(315deg)
+        @keyframes hd-span
+            0%
+                background: rgba(0,0,0, 0)
+                color: $red
+            40%, 50%
+                background: $red
+                color: #000
+            90%, 100%
+                background: rgba(0,0,0, 0)
+                color: $red
+
+// Pages
+main
+    opacity: 0
+    animation: appear 2s ease-in-out .2s forwards
+    @keyframes appear
+        from
+            opacity: 0
+        to
+            opacity: 1
+    aside.banner
+        background: $red
+        img
+            padding: 10px
+            width: 100px
+
+    &.overflow
+        overflow-x: hidden
+        overflow-y: auto
+
+    &.home
+        .accordion-orig
+            display: none
+        .accordion
+            margin: 0 auto
+            width: 750px
+            height: 100%
+            max-width: 100vw
+            span
+                display: inline-block
+                width: 5%
+                height: 100%
+                background: center/cover no-repeat
+                filter: grayscale(100%)
+                opacity: .4
+                transition: $transition
+                &:hover
+                    filter: grayscale(0%)
+                    opacity: 1
+                &.opened
+                    width: calc(100% - 5% * 4)
+                    filter: grayscale(0%)
+                    opacity: 1
+    &.collection
+        .dichotomy
+            position: relative
+            height: 100%
+            background: center/cover no-repeat
+            background-attachment: fixed
+            background-image: url('../img/dichotomy-kamon.jpg')
+            transition: $transition
+            h1
+                margin: 20px 0
+                font-size: 80px
+                transition: $transition
+            p
+                position: absolute
+                top: 50%
+                transform: translate(0, -50%)
+                width: 70%
+                font-size: 24px
+                transition: $transition
+            &.hovered
+                background-image: url('../img/dichotomy-hnya.jpg')
+                .left
+                    h1
+                        color: rgba(255,255,255, .1)
+                        text-shadow: none
+                    p
+                        opacity: 0
+                .right
+                    h1
+                        color: #fff
+                        +text-shadow(0)
+                    p
+                        opacity: 1
+            .left, .right
+                position: relative
+                float: left
+                width: 50%
+                height: 100%
+            .left
+                color: #000 !important
+                h1
+                    opacity: 1
+                    +text-shadow(255)
+                p
+                    right: 0
+                    text-align: right
+                    +text-shadow(255)
+                &:hover
+                    color: #000
+            .right
+                color: #fff !important
+                h1
+                    color: rgba(0,0,0, .1)
+                    text-shadow: none
+                p
+                    left: 0
+                    opacity: 0
+                    text-align: left
+                    +text-shadow(0)
+    &.kamon
+        .multi-section
+            height: 100%
+            background: white center/cover no-repeat
+            color: #000
+            text-align: left
+            transition: $transition
+            p span
+                left: 10%
+                transform: translateX(0)
+                +text-shadow(255)
+                font-size: 24px
+                &.hf-2
+                    +text-shadow(0)
+                    color: #fff
+    &.hnya
+        h1
+            +center-align
+            text-transform: uppercase
+            color: $red
+    &.store
+        .product-list
+            $productSize: 100px
+            margin: 0 auto
+            width: 100%
+            height: calc($productSize + 10px)
+            background: #eee
+            overflow-x: scroll
+            overflow-y: hidden
+            white-space: nowrap
+            p
+                cursor: pointer
+                position: relative
+                display: inline-block
+                margin: 10px 5px
+                width: $productSize
+                height: $productSize
+                background: #eee center/cover no-repeat
+                &:hover, &.active
+                    .border-1::before, .border-1::after
+                        width: $productSize
+                    .border-2::before, .border-2::after
+                        height: $productSize
+                .border-1, .border-2
+                    &::before, &::after
+                        pointer-events: none
+                        content: ''
+                        position: absolute
+                        left: 0
+                        top: 0
+                        width: 0
+                        height: 8px
+                        background: $red
+                        transition: $transition
+                    &::after
+                        left: initial
+                        right: 0
+                        top: initial
+                        bottom: 0
+                .border-2
+                    &::before, &::after
+                        width: 8px
+                        height: 0
+                &:first-child
+                    margin: 10px 5px 10px 10px
+                &:last-child
+                    margin: 10px 10px 10px 5px
+            .price
+                position: absolute
+                padding: 4px 8px
+                right: 15px
+                bottom: 15px
+                border-radius: 4px
+                background: rgba(255,255,255, .7)
+                box-shadow: 0 2px 8px rgba(0,0,0, .1)
+                &::before
+                    content: '$'
+        .product-info
+            display: grid
+            margin: 0 auto
+            width: 90vw
+            grid-template-areas: 'p-i-left p-i-right'
+            grid-template-columns: 1fr 2fr
+            grid-template-rows: calc(250px + 40px)
+            & > *
+                padding: 20px
+            .p-i-left
+                grid-area: p-i-left
+            .p-i-right
+                grid-area: p-i-right
+                text-align: left
+                & > *
+                    margin: 0 0 20px 0
+            #title
+                display: inline-block
+                vertical-align: middle
+                font-size: 24px
+                font-weight: bold
+            #price
+                display: inline-block
+                vertical-align: middle
+                &::before
+                    content: '\2014  $'
+            #addToCart
+                +button
+            #image
+                position: relative
+                margin: 0 auto
+                width: 250px
+                height: 250px
+                background: #eee center/cover no-repeat
+                transition: background-image $transition
+                p
+                    position: absolute
+                    left: 50%
+                    bottom: 0
+                    transform: translate(-50%, 0)
+                    i
+                        cursor: pointer
+                        display: inline-block
+                        margin: 4px
+                        width: 10px
+                        height: 10px
+                        border: 1px solid #fff
+                        border-radius: 10px
+                        box-shadow: 0 1px 4px rgba(0,0,0, .2)
+                        &.active
+                            background: #fff
+    &.about
+        p
+            a
+                +link-styles
+    &.contact
+        .section
+            margin: 0 0 20px 0
+            padding: 20px 0
+            background: #eee
+            h2
+                margin: 0 0 10px 0
+            .overflow
+                margin: 0 auto
+                width: 750px
+                max-width: 90vw
+                max-height: 250px
+                overflow-x: hidden
+                overflow-y: scroll
+            .sub-section
+                margin: 20px 0
+                text-align: left
+        #contact
+            table
+                border-collapse: collapse
+                margin: 0 auto
+                width: 600px
+                max-width: 90vw
+                td
+                    padding: 4px
+            input, textarea
+                padding: 10px
+                width: calc(100% - 20px)
+                outline: none
+                border: none
+                border-radius: 4px
+                background: #fff
+                font-size: 15px
+                &::placeholder
+                    font-size: 12px
+                &[type="text"], &[type="email"]
+                    width: calc(100% - 20px)
+                &[type="submit"]
+                    width: 100%
+                    +button
+                    padding: 7px 0
+                    font-size: 18px
+            textarea
+                resize: vertical
+                height: 100px
+
+// White BG
+body.whiteBG
+    background: #fff
+    color: #000
+    a
+        color: #000
+
+    #links-mobile
+        background: rgb(235,235,235)
+        &.opened
+            box-shadow: inset -4px 0 20px rgba(0,0,0, .05)
+
+    aside.loading
+        background: #fff
+        span
+            animation: hd-span-whiteBG 1.8s ease-in-out infinite
+            @keyframes hd-span-whiteBG
+                0%
+                    background: rgba(0,0,0, 0)
+                    color: $red
+                40%, 50%
+                    background: $red
+                    color: #fff
+                90%, 100%
+                    background: rgba(0,0,0, 0)
+                    color: $red
+
+@media (max-width: 750px)
+    body
+        height: 100vh
+        grid-template-rows: $headerSize auto 0px 0px
+        &.opened
+            transform: translate(40vw, 0)
+
+    nav
+        #links-desktop
+            display: none
+        #links-mobile
+            display: initial
+        #links-mobile-trigger
+            display: initial
+    footer
+        &.desktop
+            display: none
+        &.mobile
+            margin: 0 0 20px 0
+
+    aside.loading
+        figure
+            top: 50%
+
+    main
+        -webkit-overflow-scrolling: touch
+        &.home
+            .accordion
+                height: 100%
+                span
+                    display: block
+                    width: 100%
+                    height: 10%
+                    &:hover:not(.opened)
+                        filter: grayscale(100%)
+                        opacity: .4
+                    &.opened
+                        width: 100%
+                        height: calc(100% - 10% * 4)
+        &.collection
+            .dichotomy
+                background-image: url('../img/dichotomy-kamon-mobile.jpg')
+                h1
+                    margin: 0
+                .left h1
+                    transform: rotate(90deg) translate(35%, 0)
+                .right h1
+                    transform: rotate(90deg) translate(35%, 0)
+                .left, .right
+                    position: static
+                    p
+                        left: 50%
+                        top: initial
+                        bottom: 10px
+                        transform: translate(-50%, 0)
+                        width: 90%
+                &.hovered
+                    background-image: url('../img/dichotomy-hnya-mobile.jpg')
+        &.store
+            .product-list
+                -webkit-overflow-scrolling: touch
+                p
+                    &:hover
+                        .border-1::before, .border-1::after
+                            width: 0
+                        .border-2::before, .border-2::after
+                            height: 0
+                    &.active
+                        .border-1::before, .border-1::after
+                            width: 100px
+                        .border-2::before, .border-2::after
+                            height: 100px
+            .product-info
+                display: inline-block
+                width: 100vw
+                .p-i-left
+                    padding: 0
+                #image
+                    position: relative
+                    transform: none
+                    margin: 0 0 40px 0
+                    width: 100vw
+                    height: 100vw
+                    p
+                        top: 0
+                        bottom: initial
+                        i
+                            margin: 6px
+                            width: 15px
+                            height: 15px
+                            border-radius: 15px
+
+
+@supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0))
+    aside.loading
+        +blur
+        background: rgba(0,0,0, .7) !important
+    .store .product-list .price
+        +blur
+        background: rgba(255,255,255, .5) !important
+
+    body.whiteBG
+        #links-mobile, aside.loading
+            backdrop-filter: blur(10px) saturate(1.8)
+            -webkit-backdrop-filter: blur(10px) saturate(1.8)
+            background: rgba(255,255,255, .7) !important
