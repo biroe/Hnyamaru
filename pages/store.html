@@ -40,7 +40,7 @@
         `)
     $('.product-list p').each(function() {
         $(this).css({
-            'background-image': `url('../img/store/${$(this).attr('prod-image').split(',')[0]}')`
+            'background-image': `url('img/store/${$(this).attr('prod-image').split(',')[0]}')`
         })
     })
 
@@ -58,7 +58,7 @@
             for (i in p_i_image)
                 $('.p-i-left #image p').append('<i></i>')
             $('.p-i-left #image').css({
-                'background-image': `url('../img/store/${p_i_image[0]}')`
+                'background-image': `url('img/store/${p_i_image[0]}')`
             })
 
         $('.p-i-left #image p i').each(function() {
@@ -66,7 +66,7 @@
                 $('.p-i-left #image p i').removeClass('active')
                 $(this).addClass('active')
                 $('.p-i-left #image').css({
-                    'background-image': `url('../img/store/${p_i_image[$(this).index()]}')`
+                    'background-image': `url('img/store/${p_i_image[$(this).index()]}')`
                 })
             })
         })

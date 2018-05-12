@@ -36,7 +36,7 @@
                 </p>
             `)
         $(this).css({
-            'background-image': `url('../img/${msContent[0][2]}')`
+            'background-image': `url('img/${msContent[0][2]}')`
         })
         $('p', this).each(function() {
             setTimeout(() => {
@@ -48,7 +48,7 @@
 
             $(this).mouseenter(() => {
                 $(this).parent().css({
-                    'background-image': `url('../img/${$(this).attr('bgImg')}')`
+                    'background-image': `url('img/${$(this).attr('bgImg')}')`
                 })
             })
         })
