@@ -1,0 +1,31 @@
+[
+    {
+        "id": "p1",
+        "title": "HNYA 1",
+        "price": 3,
+        "image": ["p1-1.jpg", "p1-2.jpg"],
+        "description":
+            "This is Product-One. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }, {
+        "id": "p2",
+        "title": "HNYA 2",
+        "price": 20,
+        "image": ["p2-1.jpg", "p2-2.jpg"],
+        "description":
+            "Pi pika pikachu. Pika pi. Pikachu pi, pi pi pika pi pikachu. Pika pika pi pikachu. Pikachu pi, pikachu pi."
+    }, {
+        "id": "p3",
+        "title": "HNYA 3",
+        "price": 100,
+        "image": ["p3-1.jpg", "p3-2.jpg"],
+        "description":
+            "Leif."
+    }, {
+        "id": "p4",
+        "title": "HNYA 4",
+        "price": 120,
+        "image": ["p4-1.jpg", "p4-2.jpg", "p4-3.jpg"],
+        "description":
+            "Ryo."
+    }
+]
