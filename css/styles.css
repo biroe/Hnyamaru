@@ -551,10 +551,22 @@ main {
       right: initial;
       top: -0.05em;
       bottom: initial; }
-  main.contact div {
+  main.contact .section {
     margin: 0 0 20px 0;
     padding: 20px 0;
     background: #eee; }
+    main.contact .section h2 {
+      margin: 0 0 10px 0; }
+    main.contact .section .overflow {
+      margin: 0 auto;
+      width: 750px;
+      max-width: 90vw;
+      max-height: 250px;
+      overflow-x: hidden;
+      overflow-y: scroll; }
+    main.contact .section .sub-section {
+      margin: 20px 0;
+      text-align: left; }
   main.contact #contact table {
     border-collapse: collapse;
     margin: 0 auto;
