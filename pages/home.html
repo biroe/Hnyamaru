@@ -1,7 +1,7 @@
 <div class="accordion-orig">
-    <img src="img/home/home-1.jpg">
-    <img src="img/home/home-2.jpg">
     <img src="img/home/home-3.jpg">
+    <img src="img/home/home-2.jpg">
+    <img src="img/home/home-1.jpg">
     <img src="img/home/home-4.jpg">
     <img src="img/home/home-5.jpg">
 </div>
@@ -20,7 +20,7 @@
                 'background-image': `url('${$(this).attr('src')}')`
             })
         })
-        $('.accordion span').eq(0).addClass('opened')
+        $('.accordion span').eq(2).addClass('opened')
     $('.accordion span').click(function() {
         $('.accordion span').removeClass('opened')
         $(this).addClass('opened')
