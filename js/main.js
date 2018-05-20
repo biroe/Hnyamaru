@@ -1,4 +1,6 @@
 // Load Pages
+hnyapw = 'poop'
+
 var contactPageLoadAttempt
 function loadPages() {
     hash = location.hash.substr(1).split('?')[0]
@@ -23,12 +25,13 @@ function loadPages() {
         })
 
     pageInfo = {
-        'home': ['', ''],
+        'home': ['whiteBG', ''],
         'collection': ['whiteBG', 'overflow'],
-        'kamon': ['', 'overflow'],
-        'hnya': ['', 'overflow'],
+        'kamon': ['whiteBG', 'overflow'],
+        'hnya': ['whiteBG', 'overflow'],
         'store': ['whiteBG', 'overflow'],
-        'about': ['', ''],
+        'cart': ['whiteBG', ''],
+        'about': ['whiteBG', ''],
         'contact': ['whiteBG', 'overflow']
     }
 
@@ -67,3 +70,5 @@ $('.social a').each(function() {
         $(this).css({'background-image': `url('img/social/${$(this).attr('social')}.png')`})
     })
 })
+
+hnyapw = 'hhh'

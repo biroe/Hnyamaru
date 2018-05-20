@@ -1,8 +1,8 @@
-@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Slabo+27px");
 * {
   margin: 0;
   padding: 0;
-  font-family: "Times New Roman", Times, serif; }
+  font-family: "Slabo 27px", serif; }
   *::selection {
     background: #bf2a32;
     color: #fff;
@@ -55,7 +55,7 @@ body {
   display: grid;
   grid-template-areas: "section-1" "section-2" "section-3" "section-4";
   grid-template-columns: 100vw;
-  grid-template-rows: 80px auto 100px 40px; }
+  grid-template-rows: 80px auto 80px 30px; }
   body header {
     grid-area: section-1; }
   body main {
@@ -66,12 +66,15 @@ body {
     grid-area: section-4; }
 
 header {
-  position: relative; }
+  position: relative;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1; }
   header h1 {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    font-family: "Times New Roman", Times, serif;
     z-index: 1; }
     header h1:hover::before, header h1:hover::after {
       width: 50vw; }
@@ -91,7 +94,9 @@ header {
       transform: translate(calc(50vw + 40px), 50%); }
 
 nav {
-  position: relative; }
+  position: relative;
+  box-shadow: 0 -10px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1; }
   nav #links-desktop {
     width: 100vw;
     position: absolute;
@@ -103,6 +108,7 @@ nav {
       text-transform: uppercase;
       font-size: 24px;
       transition: 0.3s ease-in-out;
+      letter-spacing: 3px;
       font-size: 19px;
       margin: 0 10px; }
       nav #links-desktop a:hover, nav #links-desktop a.active {
@@ -155,7 +161,8 @@ nav {
       box-shadow: inset -5px 0 20px rgba(0, 0, 0, 0.8); }
     nav #links-mobile a {
       display: block;
-      margin: 0 0 6px 0; }
+      margin: 0 0 6px 0;
+      letter-spacing: 2px; }
     nav #links-mobile > a {
       position: relative;
       text-transform: uppercase;
@@ -209,6 +216,12 @@ footer :not(.social) a {
     right: initial;
     top: -0.05em;
     bottom: initial; }
+  footer :not(.social) a::after {
+    left: 50%;
+    right: initial;
+    transform: translate(-50%, 0); }
+  footer :not(.social) a::before {
+    content: none; }
 footer a {
   color: gray !important;
   text-transform: capitalize !important;
@@ -271,6 +284,7 @@ aside.loading {
       width: 40px;
       height: 40px;
       border: 1px solid #bf2a32;
+      font-family: "Times New Roman", Times, serif;
       animation: hd-span 1.8s ease-in-out infinite; }
       aside.loading figure span::after {
         position: absolute;
@@ -353,9 +367,11 @@ main {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      font-family: "Times New Roman", Times, serif;
       font-size: 30px;
       transition: 0.3s ease-in-out; }
       main.collection .dichotomy h1 span {
+        font-family: "Times New Roman", Times, serif;
         font-size: 20px; }
     main.collection .dichotomy p {
       position: absolute;
@@ -422,116 +438,116 @@ main {
     transform: translate(-50%, -50%);
     text-transform: uppercase;
     color: #bf2a32; }
-  main.store .product-list {
-    margin: 0 auto;
-    width: 100%;
-    height: calc($productSize + 10px);
-    background: #eee;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap; }
-    main.store .product-list p {
-      cursor: pointer;
-      position: relative;
-      display: inline-block;
-      margin: 10px 5px;
-      width: 100px;
-      height: 100px;
-      background: #fff center/cover no-repeat; }
-      main.store .product-list p:hover .border-1::before, main.store .product-list p:hover .border-1::after, main.store .product-list p.active .border-1::before, main.store .product-list p.active .border-1::after {
-        width: 100px; }
-      main.store .product-list p:hover .border-2::before, main.store .product-list p:hover .border-2::after, main.store .product-list p.active .border-2::before, main.store .product-list p.active .border-2::after {
-        height: 100px; }
-      main.store .product-list p .border-1::before, main.store .product-list p .border-1::after, main.store .product-list p .border-2::before, main.store .product-list p .border-2::after {
-        pointer-events: none;
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 0;
-        height: 8px;
-        background: #bf2a32;
-        transition: 0.3s ease-in-out; }
-      main.store .product-list p .border-1::after, main.store .product-list p .border-2::after {
-        left: initial;
-        right: 0;
-        top: initial;
-        bottom: 0; }
-      main.store .product-list p .border-2::before, main.store .product-list p .border-2::after {
-        width: 8px;
-        height: 0; }
-      main.store .product-list p:first-child {
-        margin: 10px 5px 10px 10px; }
-      main.store .product-list p:last-child {
-        margin: 10px 10px 10px 5px; }
-    main.store .product-list .price {
-      position: absolute;
-      padding: 4px 8px;
-      right: 15px;
-      bottom: 15px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.7);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
-      main.store .product-list .price::before {
-        content: "$"; }
-  main.store .product-info {
-    display: grid;
-    margin: 0 auto;
-    width: 90vw;
-    grid-template-areas: "p-i-left p-i-right";
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: calc(250px + 40px); }
-    main.store .product-info > * {
-      padding: 20px; }
-    main.store .product-info .p-i-left {
-      grid-area: p-i-left; }
-    main.store .product-info .p-i-right {
-      grid-area: p-i-right;
-      text-align: left; }
-      main.store .product-info .p-i-right > * {
-        margin: 0 0 20px 0; }
-    main.store .product-info #title {
-      display: inline-block;
-      vertical-align: middle;
-      font-size: 24px;
-      font-weight: bold; }
-    main.store .product-info #price {
-      display: inline-block;
-      vertical-align: middle; }
-      main.store .product-info #price::before {
-        content: "— $"; }
-    main.store .product-info #addToCart {
-      cursor: pointer;
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 4px;
-      background: #bf2a32;
-      color: #fff; }
-      main.store .product-info #addToCart:active {
-        background: rgba(191, 42, 50, 0.7); }
-    main.store .product-info #image {
+  main.store {
+    background: #eee; }
+    main.store .shop {
       position: relative;
       margin: 0 auto;
-      width: 250px;
-      height: 250px;
-      background: #eee center/cover no-repeat;
-      transition: background-image 0.3s ease-in-out; }
-      main.store .product-info #image p {
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%, 0); }
-        main.store .product-info #image p i {
+      width: 1000px;
+      max-width: 100vw;
+      text-align: center; }
+      main.store .shop .product {
+        position: relative;
+        vertical-align: top;
+        display: inline-block;
+        margin: 30px 10px 0 10px;
+        text-align: left; }
+        main.store .shop .product > * {
+          width: calc(1000px / 4); }
+        main.store .shop .product.hidden {
+          display: none !important; }
+        main.store .shop .product .p-img {
+          position: relative;
+          display: inline-block;
+          height: calc(1000px / 4);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+          background: #fff center/cover no-repeat; }
+          main.store .shop .product .p-img .carousel {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 0); }
+            main.store .shop .product .p-img .carousel i {
+              cursor: pointer;
+              display: inline-block;
+              margin: 4px;
+              width: 10px;
+              height: 10px;
+              border: 1px solid #fff;
+              border-radius: 10px;
+              box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); }
+              main.store .shop .product .p-img .carousel i.active {
+                background: #bf2a32; }
+          main.store .shop .product .p-img:hover .buyNow, main.store .shop .product .p-img:hover .blurToDark {
+            opacity: 1; }
+          main.store .shop .product .p-img .buyNow, main.store .shop .product .p-img .blurToDark {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out; }
+          main.store .shop .product .p-img .buyNow {
+            cursor: pointer;
+            display: inline-block;
+            padding: 2px 6px;
+            outline: none;
+            border: none;
+            border-radius: 4px;
+            background: #bf2a32;
+            color: #fff;
+            font-size: 20px; }
+            main.store .shop .product .p-img .buyNow:active {
+              background: rgba(191, 42, 50, 0.7); }
+          main.store .shop .product .p-img .blurToDark {
+            cursor: pointer;
+            width: calc(1000px / 4);
+            height: calc(1000px / 4);
+            background: rgba(0, 0, 0, 0.5); }
+        main.store .shop .product .p-name {
+          display: inline;
+          padding: 0 0 0 5px;
+          border-bottom: 1px solid #bf2a32;
+          font-size: 24px;
+          letter-spacing: 3px; }
+        main.store .shop .product .p-price {
+          padding: 0 0 0 5px;
+          font-size: 18px; }
+        main.store .shop .product .addToCart {
+          position: absolute;
+          right: 15px;
+          bottom: 0;
           cursor: pointer;
           display: inline-block;
-          margin: 4px;
-          width: 10px;
-          height: 10px;
-          border: 1px solid #fff;
-          border-radius: 10px;
-          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); }
-          main.store .product-info #image p i.active {
-            background: #bf2a32; }
+          padding: 2px 6px;
+          outline: none;
+          border: none;
+          border-radius: 4px;
+          background: #bf2a32;
+          color: #fff;
+          padding: 4px 0;
+          width: 35% !important;
+          font-size: 16px; }
+          main.store .shop .product .addToCart:active {
+            background: rgba(191, 42, 50, 0.7); }
+      main.store .shop .product-info {
+        display: none;
+        margin: 30px 0 0 0;
+        width: calc(1000px / 4 * 2 + 44px);
+        text-align: left; }
+        main.store .shop .product-info.shown {
+          display: inline-block; }
+        main.store .shop .product-info .p-desc, main.store .shop .product-info .p-mat {
+          margin: 0 0 20px 0; }
+      main.store .shop .close-btn {
+        cursor: pointer;
+        display: none;
+        position: absolute;
+        right: 30px;
+        top: 0;
+        font-size: 48px; }
+    main.store #cart a {
+      color: #bf2a32; }
   main.about p a {
     position: relative;
     text-transform: uppercase;
@@ -559,8 +575,12 @@ main {
     margin: 0 0 20px 0;
     padding: 20px 0;
     background: #eee; }
+    main.contact .section * {
+      font-family: "Slabo 27px", serif; }
     main.contact .section h2 {
       margin: 0 0 10px 0; }
+    main.contact .section h2, main.contact .section h3, main.contact .section b {
+      font-weight: normal; }
     main.contact .section a:hover {
       text-decoration: underline; }
     main.contact .section .overflow {
@@ -572,15 +592,51 @@ main {
       overflow-y: scroll; }
     main.contact .section .sub-section {
       margin: 20px 0;
-      text-align: left; }
-  main.contact #contact table {
+      text-align: left;
+      font-weight: normal; }
+  main.contact #contact a {
+    display: table;
+    margin: 30px auto;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 24px;
+    transition: 0.3s ease-in-out;
+    font-size: 18px;
+    text-transform: initial; }
+    main.contact #contact a:hover, main.contact #contact a.active {
+      color: #bf2a32; }
+      main.contact #contact a:hover::before, main.contact #contact a:hover::after, main.contact #contact a.active::before, main.contact #contact a.active::after {
+        width: 100%; }
+    main.contact #contact a::before, main.contact #contact a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -0.1em;
+      width: 0;
+      height: 1px;
+      background: #bf2a32;
+      transition: 0.3s ease-in-out; }
+    main.contact #contact a::before {
+      left: 0;
+      right: initial;
+      top: -0.05em;
+      bottom: initial; }
+    main.contact #contact a:hover {
+      text-decoration: none; }
+    main.contact #contact a::after {
+      left: 50%;
+      right: initial;
+      transform: translate(-50%, 0); }
+    main.contact #contact a::before {
+      content: none; }
+  main.contact #subscribe table {
     border-collapse: collapse;
     margin: 0 auto;
     width: 600px;
     max-width: 90vw; }
-    main.contact #contact table td {
+    main.contact #subscribe table td {
       padding: 4px; }
-  main.contact #contact input, main.contact #contact textarea {
+  main.contact #subscribe input, main.contact #subscribe textarea {
     padding: 10px;
     width: calc(100% - 20px);
     outline: none;
@@ -588,23 +644,25 @@ main {
     border-radius: 4px;
     background: #fff;
     font-size: 15px; }
-    main.contact #contact input::placeholder, main.contact #contact textarea::placeholder {
+    main.contact #subscribe input::placeholder, main.contact #subscribe textarea::placeholder {
       font-size: 12px; }
-    main.contact #contact input[type="text"], main.contact #contact input[type="email"], main.contact #contact textarea[type="text"], main.contact #contact textarea[type="email"] {
+    main.contact #subscribe input[type="text"], main.contact #subscribe input[type="email"], main.contact #subscribe textarea[type="text"], main.contact #subscribe textarea[type="email"] {
       width: calc(100% - 20px); }
-    main.contact #contact input[type="submit"], main.contact #contact textarea[type="submit"] {
+    main.contact #subscribe input[type="submit"], main.contact #subscribe textarea[type="submit"] {
       width: 100%;
       cursor: pointer;
       display: inline-block;
       padding: 2px 6px;
+      outline: none;
+      border: none;
       border-radius: 4px;
       background: #bf2a32;
       color: #fff;
       padding: 7px 0;
       font-size: 18px; }
-      main.contact #contact input[type="submit"]:active, main.contact #contact textarea[type="submit"]:active {
+      main.contact #subscribe input[type="submit"]:active, main.contact #subscribe textarea[type="submit"]:active {
         background: rgba(191, 42, 50, 0.7); }
-  main.contact #contact textarea {
+  main.contact #subscribe textarea {
     resize: vertical;
     height: 100px; }
 
@@ -687,35 +745,18 @@ body.whiteBG {
           width: 90%; }
       main.collection .dichotomy.hovered {
         background-image: url("../img/dichotomy-hnya-mobile.jpg"); }
-    main.store .product-list {
-      -webkit-overflow-scrolling: touch; }
-      main.store .product-list p:hover .border-1::before, main.store .product-list p:hover .border-1::after {
-        width: 0; }
-      main.store .product-list p:hover .border-2::before, main.store .product-list p:hover .border-2::after {
-        height: 0; }
-      main.store .product-list p.active .border-1::before, main.store .product-list p.active .border-1::after {
-        width: 100px; }
-      main.store .product-list p.active .border-2::before, main.store .product-list p.active .border-2::after {
-        height: 100px; }
+    main.store .product {
+      display: table !important;
+      margin: 0 auto 20px auto !important; }
+      main.store .product > * {
+        width: 90vw !important; }
+      main.store .product .p-img {
+        height: 90vw !important; }
+        main.store .product .p-img .blurToDark {
+          width: 90vw !important;
+          height: 90vw !important; }
     main.store .product-info {
-      display: inline-block;
-      width: 100vw; }
-      main.store .product-info .p-i-left {
-        padding: 0; }
-      main.store .product-info #image {
-        position: relative;
-        transform: none;
-        margin: 0 0 40px 0;
-        width: 100vw;
-        height: 100vw; }
-        main.store .product-info #image p {
-          top: 0;
-          bottom: initial; }
-          main.store .product-info #image p i {
-            margin: 6px;
-            width: 15px;
-            height: 15px;
-            border-radius: 15px; } }
+      width: 90vw !important; } }
 @supports (backdrop-filter: blur(0)) or (-webkit-backdrop-filter: blur(0)) {
   aside.loading {
     backdrop-filter: blur(8px) saturate(1.8);
