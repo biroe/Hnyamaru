@@ -44,7 +44,11 @@
             $(this).mouseenter(() => {
                 $('.carousel i').removeClass('active')
                 $(this).addClass('active')
-                // $()
+                $this = $(this).parent().parent()
+                $this.css({
+                    'background-image':
+                        `url('../img/store/${$this.attr('p-img').split(',')[$(this).index()]}')`
+                })
             })
         })
     })
